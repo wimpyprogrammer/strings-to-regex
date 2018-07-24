@@ -9,8 +9,12 @@
     "lib": "lib"
   },
   "scripts": {
+    "build": "babel src -d lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.54"
+  }
 }
