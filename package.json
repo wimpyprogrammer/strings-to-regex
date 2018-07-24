@@ -1,0 +1,16 @@
+{
+  "name": "collapse-regex-char-set",
+  "version": "1.0.0",
+  "description": "Condense a set of words into a regular expression pattern",
+  "author": "Drew Keller <drew@wimpyprogrammer.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
