@@ -9,8 +9,19 @@
     "lib": "lib"
   },
   "scripts": {
+    "build": "npm run clean && babel src -d lib --extensions '.js,.ts'",
+    "clean": "rimraf lib/*",
+    "lint": "tsc; tslint -p ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-typescript": "^7.0.0-beta.54",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2"
+  }
 }
