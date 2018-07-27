@@ -1,7 +1,14 @@
 {
-	"extends": [
-		"tslint:recommended"
-	],
+	"extends": ["tslint:recommended"],
+	"jsRules": {
+		"arrow-parens": false,
+		"indent": false,
+		"object-literal-key-quotes": false,
+		"one-line": false,
+		"quotemark": false,
+		"trailing-comma": false,
+		"whitespace": false
+	},
 	"rules": {
 		"arrow-parens": false,
 		"indent": false,
