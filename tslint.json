@@ -1,5 +1,14 @@
 {
 	"extends": [
 		"tslint:recommended"
-	]
+	],
+	"rules": {
+		"arrow-parens": false,
+		"indent": false,
+		"object-literal-key-quotes": false,
+		"one-line": false,
+		"quotemark": false,
+		"trailing-comma": false,
+		"whitespace": false
+	}
 }
