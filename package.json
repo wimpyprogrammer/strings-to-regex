@@ -14,9 +14,12 @@
     "format": "prettier --write 'src/**'",
     "lint": "tsc; tslint -p ./",
     "precommit": "pretty-quick --staged",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "**/src/**/?*.js"
+    ],
     "transform": {
     },
     "testMatch": [
