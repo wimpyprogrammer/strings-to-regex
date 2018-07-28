@@ -1,22 +1,22 @@
 import { keys, map, partition, uniq } from 'lodash';
 
 type Char = string;
-interface ICharTree extends Record<Char, CharLeaf> {}
-type CharLeaf = ICharTree;
+interface ICharTrie extends Record<Char, CharNode> {}
+type CharNode = ICharTrie;
 
-const terminator: ICharTree = {};
+const leafNode: CharNode = {};
 
 /**
- * Arrange a head character and its suffixes into a tree.
- * Flatten leaves of the character tree containing a single letter.
+ * Arrange a head character and its suffixes into a trie.
+ * Flatten leaves of the character trie containing a single letter.
  * For example, { f: { o: { o: { '': {}, bar: {} } } } } flattens
  * to { foo: { '': {}, bar: {} } }
  *
  * @param headChar A character prefix
- * @param tailGroup A character tree of suffixes to headChar
- * @returns A character tree with tailGroup branching from headChar
+ * @param tailGroup A character trie of suffixes to headChar
+ * @returns A character trie with tailGroup branching from headChar
  */
-function mergeGroups(headChar: Char, tailGroup: ICharTree): ICharTree {
+function mergeGroups(headChar: Char, tailGroup: ICharTrie): ICharTrie {
 	const tails = keys(tailGroup);
 	if (tails.length > 1) {
 		return { [headChar]: tailGroup };
@@ -27,26 +27,26 @@ function mergeGroups(headChar: Char, tailGroup: ICharTree): ICharTree {
 }
 
 /**
- * Parse a list of words to build a tree of common prefixes
+ * Parse a list of words to build a trie of common prefixes.
  *
  * @param words A list of words to parse
- * @returns A tree of words grouped by the initial characters they share
+ * @returns A trie of words grouped by the initial characters they share
  */
-function groupUniqueByCommonHead(words: string[]): ICharTree {
+function groupUniqueByCommonHead(words: string[]): ICharTrie {
 	if (words.length === 0) {
-		return terminator;
+		return leafNode;
 	}
 
 	const wordToMatch = words[0];
 
 	if (wordToMatch === '') {
 		// End of the target word reached. Include an empty string to signify that
-		// a word ends at this spot, and group any remaining words in the tree.
+		// a word ends at this spot, and group any remaining words in the trie.
 		const [, nonEmptyWords] = partition(words, word => word === '');
-		return { '': terminator, ...groupByCommonHead(nonEmptyWords) };
+		return { '': leafNode, ...groupByCommonHead(nonEmptyWords) };
 	}
 
-	// Begin a new tree containing all words starting with the same letter as wordToMatch
+	// Begin a new trie containing all words starting with the same letter as wordToMatch
 	const charToMatch = wordToMatch[0];
 	const [wordsMatched, wordsMissed] = partition(words, ['[0]', charToMatch]);
 
@@ -59,7 +59,7 @@ function groupUniqueByCommonHead(words: string[]): ICharTree {
 }
 
 /** @borrows groupUniqueByCommonHead as groupByCommonHead */
-export function groupByCommonHead(words: string[]): ICharTree {
+export function groupByCommonHead(words: string[]): ICharTrie {
 	const uniqueWords = uniq(words);
 	return groupUniqueByCommonHead(uniqueWords);
 }
