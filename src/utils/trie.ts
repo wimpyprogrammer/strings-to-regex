@@ -32,7 +32,7 @@ function mergeGroups(headChar: Char, tailGroup: ICharTrie): ICharTrie {
  * @param words A list of words to parse
  * @returns A trie of words grouped by the initial characters they share
  */
-function groupUniqueByCommonHead(words: string[]): ICharTrie {
+function buildUnique(words: string[]): ICharTrie {
 	if (words.length === 0) {
 		return leafNode;
 	}
@@ -43,7 +43,7 @@ function groupUniqueByCommonHead(words: string[]): ICharTrie {
 		// End of the target word reached. Include an empty string to signify that
 		// a word ends at this spot, and group any remaining words in the trie.
 		const [, nonEmptyWords] = partition(words, word => word === '');
-		return { '': leafNode, ...groupByCommonHead(nonEmptyWords) };
+		return { '': leafNode, ...build(nonEmptyWords) };
 	}
 
 	// Begin a new trie containing all words starting with the same letter as wordToMatch
@@ -51,15 +51,15 @@ function groupUniqueByCommonHead(words: string[]): ICharTrie {
 	const [wordsMatched, wordsMissed] = partition(words, ['[0]', charToMatch]);
 
 	const tailsMatched = map(wordsMatched, word => word.substring(1));
-	const tailsMatchedGrouped = groupByCommonHead(tailsMatched);
+	const tailsMatchedGrouped = build(tailsMatched);
 
 	const groupWithChildren = mergeGroups(charToMatch, tailsMatchedGrouped);
 
-	return { ...groupWithChildren, ...groupByCommonHead(wordsMissed) };
+	return { ...groupWithChildren, ...build(wordsMissed) };
 }
 
-/** @borrows groupUniqueByCommonHead as groupByCommonHead */
-export function groupByCommonHead(words: string[]): ICharTrie {
+/** @borrows buildUnique as build */
+export function build(words: string[]): ICharTrie {
 	const uniqueWords = uniq(words);
-	return groupUniqueByCommonHead(uniqueWords);
+	return buildUnique(uniqueWords);
 }
