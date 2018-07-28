@@ -78,4 +78,19 @@ describe('groupByCommonHead', () => {
 			foo: { ' bar': {}, bar: {} },
 		});
 	});
+
+	it('is case-sensitive with string heads', () => {
+		const words = ['Foo', 'foo'];
+		expect(groupByCommonHead(words)).toEqual({
+			Foo: {},
+			foo: {},
+		});
+	});
+
+	it('is case-sensitive with string tails', () => {
+		const words = ['foo', 'foO'];
+		expect(groupByCommonHead(words)).toEqual({
+			fo: { o: {}, O: {} },
+		});
+	});
 });
