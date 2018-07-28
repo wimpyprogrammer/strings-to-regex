@@ -1,9 +1,5 @@
 import { keys, map, partition, uniq } from 'lodash';
 
-type Char = string;
-interface ICharTrie extends Record<Char, CharNode> {}
-type CharNode = ICharTrie;
-
 const leafNode: CharNode = {};
 
 /**

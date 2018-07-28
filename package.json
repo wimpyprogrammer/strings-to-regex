@@ -18,7 +18,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/src/**/?*.(js|ts)"
+      "**/src/**/?*.(js|ts)",
+      "!**/src/**/?*.d.ts"
     ],
     "transform": {
       "^.+\\.ts$": "ts-jest"
