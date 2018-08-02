@@ -93,4 +93,44 @@ describe('build', () => {
 			fo: { o: {}, O: {} },
 		});
 	});
+
+	it('handles complex words', () => {
+		const words = [
+			'Maine',
+			'Maryland',
+			'Massachusetts',
+			'Michigan',
+			'Minnesota',
+			'Mississippi',
+			'Missouri',
+			'Montana',
+			'Nebraska',
+			'Nevada',
+			'New Hampshire',
+			'New Jersey',
+			'New Mexico',
+			'New York',
+			'North Carolina',
+			'North Dakota',
+			'Ohio',
+			'Oklahoma',
+			'Oregon',
+		];
+		expect(build(words)).toEqual({
+			M: {
+				a: { ine: {}, ryland: {}, ssachusetts: {} },
+				i: { chigan: {}, nnesota: {}, ss: { issippi: {}, ouri: {} } },
+				ontana: {},
+			},
+			N: {
+				e: {
+					braska: {},
+					vada: {},
+					'w ': { Hampshire: {}, Jersey: {}, Mexico: {}, York: {} },
+				},
+				'orth ': { Carolina: {}, Dakota: {} },
+			},
+			O: { hio: {}, klahoma: {}, regon: {} },
+		});
+	});
 });
