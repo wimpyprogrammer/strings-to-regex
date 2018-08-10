@@ -1,6 +1,6 @@
-import { keys, map, partition, uniq } from 'lodash';
+import { partition, uniq } from 'lodash';
 
-const leafNode: CharNode = {};
+const leafNode = new Map() as ICharTrie;
 
 /**
  * Arrange a head character and its suffixes into a trie.
@@ -13,13 +13,12 @@ const leafNode: CharNode = {};
  * @returns A character trie with tailGroup branching from headChar
  */
 function mergeGroups(headChar: Char, tailGroup: ICharTrie): ICharTrie {
-	const tails = keys(tailGroup);
-	if (tails.length > 1) {
-		return { [headChar]: tailGroup };
+	if (tailGroup.size !== 1) {
+		return new Map([[headChar, tailGroup]]) as ICharTrie;
 	}
 
-	const onlyTail = tails[0];
-	return { [headChar + onlyTail]: tailGroup[onlyTail] };
+	const [onlyTail, onBranch] = tailGroup.entries().next().value;
+	return new Map([[headChar + onlyTail, onBranch]]) as ICharTrie;
 }
 
 /**
@@ -39,19 +38,19 @@ function buildUnique(words: string[]): ICharTrie {
 		// End of the target word reached. Include an empty string to signify that
 		// a word ends at this spot, and group any remaining words in the trie.
 		const [, nonEmptyWords] = partition(words, word => word === '');
-		return { '': leafNode, ...build(nonEmptyWords) };
+		return new Map([['', leafNode], ...build(nonEmptyWords)]) as ICharTrie;
 	}
 
 	// Begin a new trie containing all words starting with the same letter as wordToMatch
 	const charToMatch = wordToMatch[0];
 	const [wordsMatched, wordsMissed] = partition(words, ['[0]', charToMatch]);
 
-	const tailsMatched = map(wordsMatched, word => word.substring(1));
+	const tailsMatched = wordsMatched.map(word => word.substring(1));
 	const tailsMatchedGrouped = build(tailsMatched);
 
 	const groupWithChildren = mergeGroups(charToMatch, tailsMatchedGrouped);
 
-	return { ...groupWithChildren, ...build(wordsMissed) };
+	return new Map([...groupWithChildren, ...build(wordsMissed)]) as ICharTrie;
 }
 
 /** @borrows buildUnique as build */

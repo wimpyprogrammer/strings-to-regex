@@ -1,3 +1,4 @@
 type Char = string;
-interface ICharTrie extends Record<Char, CharNode> {}
-type CharNode = ICharTrie;
+interface ICharTrie extends Map<Char, ICharTrie> {
+	[headChar: string]: ICharTrie;
+}
