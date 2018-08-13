@@ -1,4 +1,5 @@
 import { partition, uniq } from 'lodash';
+import { Char, ICharTrie } from '../types/charTrie';
 
 const leafNode = new Map() as ICharTrie;
 
