@@ -1,0 +1,36 @@
+.jumbotron {
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+#words {
+	height: 15em;
+}
+
+.form-inline {
+	flex-direction: column;
+}
+
+.checkbox {
+	margin-top: 1em;
+}
+
+.submit-form-group {
+	text-align: center;
+	margin-top: 1em;
+}
+
+#output {
+	height: 5em;
+}
+
+@media (min-width: 992px) {
+	.checkbox {
+		margin-left: auto;
+		margin-top: 0;
+	}
+
+	.form-inline {
+		flex-direction: row;
+	}
+}
