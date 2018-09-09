@@ -2,12 +2,12 @@ interface ICharTrieData {
 	[prefix: string]: ICharTrieData;
 }
 
-type Char = string;
-interface ICharTrie extends Map<Char, ICharTrie> {
+export type Char = string;
+export interface ICharTrie extends Map<Char, ICharTrie> {
 	[headChar: string]: any | ICharTrie;
 }
 
-class CharTrie extends Map<Char, CharTrie> implements ICharTrie {
+export class CharTrie extends Map<Char, CharTrie> implements ICharTrie {
 	[headChar: string]: any | CharTrie;
 
 	public static create(trieData: ICharTrieData): CharTrie {
@@ -21,5 +21,3 @@ class CharTrie extends Map<Char, CharTrie> implements ICharTrie {
 		return trie as CharTrie;
 	}
 }
-
-export { Char, CharTrie, ICharTrie };
