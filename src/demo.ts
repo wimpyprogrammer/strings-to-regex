@@ -40,3 +40,13 @@ function onClickGenerate() {
 document
 	.querySelector('.js-generate')
 	.addEventListener('click', onClickGenerate);
+
+(() => {
+	const exampleInput =
+		'Alabama, Alaska, Arizona, Arkansas, California, ' +
+		'Colorado, Connecticut, Delaware, Florida, Georgia';
+
+	$input.value = exampleInput;
+	const pattern = generatePattern(exampleInput, ',', TrimLeadingAndTrailing);
+	displayPattern(pattern);
+})();
