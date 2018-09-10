@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "npm run clean && babel src -d lib --extensions '.js,.ts'",
+    "build-demo": "webpack --config demo/webpack.config.js",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
     "lint": "tsc; tslint -p ./",
@@ -50,7 +51,10 @@
     "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.0.1",
+    "ts-loader": "^5.0.0",
     "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "webpack": "^4.17.2",
+    "webpack-command": "^0.4.1"
   }
 }
