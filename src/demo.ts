@@ -6,6 +6,7 @@ const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
 
 const $input = document.querySelector<HTMLTextAreaElement>('.js-words');
 const $delimiter = document.querySelector<HTMLSelectElement>('.js-delimiter');
+const $caseSensitive = document.querySelector<HTMLInputElement>('.js-case');
 const $trim = document.querySelector<HTMLInputElement>('.js-trim');
 const $output = document.querySelector<HTMLTextAreaElement>('.js-output');
 
@@ -26,9 +27,14 @@ function displayPattern(pattern: string) {
 }
 
 function onClickGenerate() {
-	const words = $input.value;
+	let words = $input.value;
 	const delimiter = $delimiter.selectedOptions[0].value;
+	const isCaseSensitive = $caseSensitive.checked;
 	const isWhitespaceTrimmed = $trim.checked;
+
+	if (!isCaseSensitive) {
+		words = words.toLowerCase();
+	}
 
 	const whitespace = isWhitespaceTrimmed ? TrimLeadingAndTrailing : Preserve;
 
