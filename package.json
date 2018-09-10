@@ -20,7 +20,8 @@
   "jest": {
     "collectCoverageFrom": [
       "**/src/**/?*.(js|ts)",
-      "!**/src/**/?*.d.ts"
+      "!**/src/**/?*.d.ts",
+      "!**/src/demo.ts"
     ],
     "transform": {
       "^.+\\.ts$": "ts-jest"
