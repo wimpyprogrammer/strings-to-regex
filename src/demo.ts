@@ -22,8 +22,18 @@ function generatePattern(
 	return pattern;
 }
 
+let clearSuccessIndicatorHandle: number;
 function displayPattern(pattern: string) {
 	$output.value = pattern;
+
+	// Temporarily style the output box as valid
+	$output.classList.add('is-valid');
+
+	clearTimeout(clearSuccessIndicatorHandle);
+	clearSuccessIndicatorHandle = setTimeout(
+		() => $output.classList.remove('is-valid'),
+		1000
+	);
 }
 
 function onClickGenerate() {
