@@ -33,6 +33,12 @@ select:invalid {
 	transition: border-color 0.6s ease-out;
 }
 
+@media (min-width: 576px) {
+	label + select {
+		margin-left: 0.5em;
+	}
+}
+
 @media (min-width: 992px) {
 	.form-check {
 		margin-left: auto;
