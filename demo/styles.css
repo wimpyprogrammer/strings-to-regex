@@ -3,6 +3,12 @@
 	padding-top: 1em;
 }
 
+input:invalid,
+textarea:invalid,
+select:invalid {
+	border: 2px solid red;
+}
+
 #words {
 	height: 15em;
 }

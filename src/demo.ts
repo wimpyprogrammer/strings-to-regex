@@ -4,6 +4,7 @@ import { parseString, WhitespaceHandling } from './utils/wordList';
 
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
 
+const $form = document.querySelector<HTMLFormElement>('.js-form');
 const $input = document.querySelector<HTMLTextAreaElement>('.js-words');
 const $delimiter = document.querySelector<HTMLSelectElement>('.js-delimiter');
 const $caseSensitive = document.querySelector<HTMLInputElement>('.js-case');
@@ -37,6 +38,10 @@ function displayPattern(pattern: string) {
 }
 
 function onClickGenerate() {
+	if (!$form.reportValidity()) {
+		return;
+	}
+
 	let words = $input.value;
 	const delimiter = $delimiter.selectedOptions[0].value;
 	const isCaseSensitive = $caseSensitive.checked;
