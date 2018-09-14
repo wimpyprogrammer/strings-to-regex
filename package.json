@@ -12,6 +12,9 @@
   "directories": {
     "lib": "lib"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "build": "npm run clean && babel src -d lib --extensions '.js,.ts'",
     "build-demo": "webpack --config demo/webpack.config.js",
