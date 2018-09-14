@@ -1,6 +1,10 @@
 {
   "name": "collapse-regex-char-set",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wimpyprogrammer/collapse-regex-char-set.git"
+  },
   "description": "Condense a set of words into a regular expression pattern",
   "author": "Drew Keller <drew@wimpyprogrammer.com>",
   "license": "MIT",
