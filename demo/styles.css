@@ -1,0 +1,51 @@
+.jumbotron {
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+	border: 2px solid red;
+}
+
+#words {
+	height: 15em;
+}
+
+.form-inline {
+	flex-direction: column;
+}
+
+.form-check {
+	margin-top: 1em;
+}
+
+.submit-form-group {
+	text-align: center;
+	margin-top: 1em;
+}
+
+#output {
+	height: 5em;
+
+	border-width: 4px;
+	transition: border-color 0.6s ease-out;
+}
+
+@media (min-width: 576px) {
+	label + select {
+		margin-left: 0.5em;
+	}
+}
+
+@media (min-width: 992px) {
+	.form-check {
+		margin-left: auto;
+		margin-top: 0;
+	}
+
+	.form-inline {
+		flex-direction: row;
+	}
+}
