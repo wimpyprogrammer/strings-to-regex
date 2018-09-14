@@ -38,12 +38,16 @@ function displayPattern(pattern: string) {
 }
 
 function onClickGenerate() {
-	if (!$form.reportValidity()) {
-		return;
+	try {
+		if (!$form.reportValidity()) {
+			return;
+		}
+	} catch (ex) {
+		// Ignore browsers that don't support reportValidity()
 	}
 
 	let words = $input.value;
-	const delimiter = $delimiter.selectedOptions[0].value;
+	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
 	const isCaseSensitive = $caseSensitive.checked;
 	const isWhitespaceTrimmed = $trim.checked;
 

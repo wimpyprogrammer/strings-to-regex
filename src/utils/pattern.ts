@@ -9,7 +9,7 @@ import { ICharTrie } from '../types/charTrie';
  */
 export function build(charTrie: ICharTrie): string {
 	const patternSegments = Array.from(
-		charTrie,
+		[...charTrie],
 		([head, suffixTrie]) => `${head}${build(suffixTrie)}`
 	);
 
