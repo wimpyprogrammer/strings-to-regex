@@ -1,4 +1,4 @@
-import { partition, uniq } from 'lodash';
+import { partition } from 'lodash';
 import { Char, ICharTrie } from '../types/charTrie';
 
 const leafNode = new Map() as ICharTrie;
@@ -56,6 +56,6 @@ function buildUnique(words: string[]): ICharTrie {
 
 /** @borrows buildUnique as build */
 export function build(words: string[]): ICharTrie {
-	const uniqueWords = uniq(words);
+	const uniqueWords = [...new Set(words)];
 	return buildUnique(uniqueWords);
 }
