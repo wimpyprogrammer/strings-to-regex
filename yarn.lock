@@ -551,10 +551,6 @@
   version "23.3.1"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.1.tgz#a4319aedb071d478e6f407d1c4578ec8156829cf"
 
-"@types/lodash@^4.14.114":
-  version "4.14.114"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.114.tgz#e6f251af5994dd0d7ce141f9241439b4f40270f6"
-
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
