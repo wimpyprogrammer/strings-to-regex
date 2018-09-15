@@ -1,7 +1,24 @@
-import { partition, uniq } from 'lodash';
 import { Char, ICharTrie } from '../types/charTrie';
 
 const leafNode = new Map() as ICharTrie;
+
+function groupWordsByHeadChar(
+	words: string[],
+	firstChar: string
+): [string[], string[]] {
+	const matched: string[] = [];
+	const missed: string[] = [];
+
+	words.forEach(word => {
+		if (word[0] === firstChar) {
+			matched.push(word);
+		} else {
+			missed.push(word);
+		}
+	});
+
+	return [matched, missed];
+}
 
 /**
  * Arrange a head character and its suffixes into a trie.
@@ -38,13 +55,13 @@ function buildUnique(words: string[]): ICharTrie {
 	if (wordToMatch === '') {
 		// End of the target word reached. Include an empty string to signify that
 		// a word ends at this spot, and group any remaining words in the trie.
-		const [, nonEmptyWords] = partition(words, word => word === '');
+		const nonEmptyWords = words.filter(word => word !== '');
 		return new Map([['', leafNode], ...build(nonEmptyWords)]) as ICharTrie;
 	}
 
 	// Begin a new trie containing all words starting with the same letter as wordToMatch
 	const charToMatch = wordToMatch[0];
-	const [wordsMatched, wordsMissed] = partition(words, ['[0]', charToMatch]);
+	const [wordsMatched, wordsMissed] = groupWordsByHeadChar(words, charToMatch);
 
 	const tailsMatched = wordsMatched.map(word => word.substring(1));
 	const tailsMatchedGrouped = build(tailsMatched);
@@ -56,6 +73,6 @@ function buildUnique(words: string[]): ICharTrie {
 
 /** @borrows buildUnique as build */
 export function build(words: string[]): ICharTrie {
-	const uniqueWords = uniq(words);
+	const uniqueWords = [...new Set(words)];
 	return buildUnique(uniqueWords);
 }
