@@ -22,7 +22,8 @@
     "format": "prettier --write 'src/**'",
     "lint": "tsc; tslint -p ./",
     "precommit": "pretty-quick --staged",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "travisci": "npm run lint && npm run test"
   },
   "jest": {
     "collectCoverageFrom": [
