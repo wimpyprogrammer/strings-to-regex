@@ -1,7 +1,7 @@
 {
 	"parser": "@typescript-eslint/parser",
 	"extends": [
-		"eslint:recommended",
+		"airbnb-base",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"prettier",
@@ -9,5 +9,15 @@
 	],
 	"parserOptions": {
 		"ecmaVersion": 2018
+	},
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [
+				".ts"
+			]
+		},
+		"import/resolver": {
+			"typescript": {}
+		}
 	}
 }
