@@ -10,6 +10,9 @@
 	"parserOptions": {
 		"ecmaVersion": 2018
 	},
+	"rules": {
+		"import/prefer-default-export": "off"
+	},
 	"settings": {
 		"import/parsers": {
 			"@typescript-eslint/parser": [
