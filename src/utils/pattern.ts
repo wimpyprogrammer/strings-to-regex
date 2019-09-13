@@ -1,4 +1,4 @@
-import { ICharTrie } from '../types/charTrie';
+import { CharTrie } from '../types/charTrie';
 
 /**
  * Generate a regular expression pattern that captures the strings
@@ -7,7 +7,7 @@ import { ICharTrie } from '../types/charTrie';
  * @param charTrie A character trie
  * @returns A regular expression pattern
  */
-export function build(charTrie: ICharTrie): string {
+export function build(charTrie: CharTrie): string {
 	const patternSegments = Array.from(
 		[...charTrie],
 		([head, suffixTrie]) => `${head}${build(suffixTrie)}`

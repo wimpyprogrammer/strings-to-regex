@@ -24,7 +24,7 @@ function generatePattern(
 }
 
 let clearSuccessIndicatorHandle: number;
-function displayPattern(pattern: string) {
+function displayPattern(pattern: string): void {
 	$output.value = pattern;
 
 	// Temporarily style the output box as valid
@@ -37,7 +37,7 @@ function displayPattern(pattern: string) {
 	);
 }
 
-function onClickGenerate() {
+function onClickGenerate(): void {
 	try {
 		if (!$form.reportValidity()) {
 			return;
@@ -66,7 +66,7 @@ document
 	.querySelector('.js-generate')
 	.addEventListener('click', onClickGenerate);
 
-(() => {
+((): void => {
 	const exampleInput =
 		'Alabama, Alaska, Arizona, Arkansas, California, ' +
 		'Colorado, Connecticut, Delaware, Florida, Georgia';
