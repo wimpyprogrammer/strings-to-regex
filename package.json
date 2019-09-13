@@ -20,7 +20,7 @@
     "build-demo": "webpack --config demo/webpack.config.js",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
-    "lint": "tsc; eslint . --ext .js,.ts",
+    "lint": "tsc; eslint . --report-unused-disable-directives --ext .js,.ts",
     "precommit": "pretty-quick --staged",
     "test": "jest --coverage",
     "travisci": "npm run lint && npm run test"
