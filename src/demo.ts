@@ -1,5 +1,4 @@
-import { build as buildPattern } from './utils/pattern';
-import { build as buildTrie } from './utils/trie';
+import { condense, condenseIgnoreCase } from './index';
 import { parseString, WhitespaceHandling } from './utils/wordList';
 
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
@@ -11,21 +10,24 @@ const $caseSensitive = document.querySelector<HTMLInputElement>('.js-case');
 const $trim = document.querySelector<HTMLInputElement>('.js-trim');
 const $output = document.querySelector<HTMLTextAreaElement>('.js-output');
 
-function generatePattern(
-	words: string,
-	delimiter: string,
-	whitespace: WhitespaceHandling
-): string {
+function generatePattern(words: string): RegExp {
+	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
+	const isCaseSensitive = $caseSensitive.checked;
+	const isWhitespaceTrimmed = $trim.checked;
+
+	const whitespace = isWhitespaceTrimmed ? TrimLeadingAndTrailing : Preserve;
+
 	const wordList = parseString(words, delimiter, whitespace);
-	const wordTrie = buildTrie(wordList);
-	const pattern = buildPattern(wordTrie);
+
+	const fnCondense = isCaseSensitive ? condense : condenseIgnoreCase;
+	const pattern = fnCondense(wordList);
 
 	return pattern;
 }
 
 let clearSuccessIndicatorHandle: number;
-function displayPattern(pattern: string): void {
-	$output.value = pattern;
+function displayPattern(pattern: RegExp): void {
+	$output.value = pattern.toString();
 
 	// Temporarily style the output box as valid
 	$output.classList.add('is-valid');
@@ -46,19 +48,8 @@ function onClickGenerate(): void {
 		// Ignore browsers that don't support reportValidity()
 	}
 
-	let words = $input.value;
-	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
-	const isCaseSensitive = $caseSensitive.checked;
-	const isWhitespaceTrimmed = $trim.checked;
-
-	if (!isCaseSensitive) {
-		words = words.toLowerCase();
-	}
-
-	const whitespace = isWhitespaceTrimmed ? TrimLeadingAndTrailing : Preserve;
-
-	const pattern = generatePattern(words, delimiter, whitespace);
-
+	const words = $input.value;
+	const pattern = generatePattern(words);
 	displayPattern(pattern);
 }
 
@@ -72,6 +63,6 @@ document
 		'Colorado, Connecticut, Delaware, Florida, Georgia';
 
 	$input.value = exampleInput;
-	const pattern = generatePattern(exampleInput, ',', TrimLeadingAndTrailing);
+	const pattern = generatePattern(exampleInput);
 	displayPattern(pattern);
 })();
