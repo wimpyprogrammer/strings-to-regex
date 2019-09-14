@@ -12,6 +12,12 @@
 		"ecmaVersion": 2018
 	},
 	"rules": {
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": ["**/*.spec.{js,ts}"]
+			}
+		],
 		"import/prefer-default-export": "off"
 	},
 	"settings": {
