@@ -1,5 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { resolve } = require('path');
+
 module.exports = {
-	entry: './src/demo.ts',
+	entry: './demo/src/demo.ts',
 	mode: 'production',
 	module: {
 		rules: [
@@ -9,7 +12,10 @@ module.exports = {
 				use: [
 					{
 						loader: 'ts-loader',
-						options: { compilerOptions: { noEmit: false } },
+						options: {
+							compilerOptions: { noEmit: false },
+							configFile: resolve(__dirname, './tsconfig.json'),
+						},
 					},
 				],
 			},
@@ -17,7 +23,7 @@ module.exports = {
 	},
 	output: {
 		filename: 'demo.js',
-		path: __dirname,
+		path: resolve(__dirname, './lib'),
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],

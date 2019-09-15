@@ -1,4 +1,4 @@
-import { condense, condenseIgnoreCase } from './index';
+import { condense, condenseIgnoreCase } from '../../src/index';
 import { parseString, WhitespaceHandling } from './utils/wordList';
 
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;

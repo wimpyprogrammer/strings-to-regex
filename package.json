@@ -21,6 +21,7 @@
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
     "lint": "tsc; eslint . --report-unused-disable-directives --ext .js,.ts",
+    "lint-demo": "tsc -p ./demo/tsconfig.json; eslint . --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
     "test": "jest --coverage",
     "travisci": "npm run lint && npm run test"
@@ -29,7 +30,7 @@
     "collectCoverageFrom": [
       "**/src/**/?*.(js|ts)",
       "!**/src/**/?*.d.ts",
-      "!**/src/demo.ts"
+      "!demo/src/demo.ts"
     ],
     "restoreMocks": true,
     "transform": {
