@@ -20,8 +20,8 @@
     "build-demo": "webpack --config demo/webpack.config.js",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
-    "lint": "tsc; eslint . --report-unused-disable-directives --ext .js,.ts",
-    "lint-demo": "tsc -p ./demo/tsconfig.json; eslint . --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
+    "lint": "tsc -p ./tsconfig.json; eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
+    "lint-demo": "tsc -p ./demo/tsconfig.json; eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
     "test": "jest --coverage",
     "travisci": "npm run lint && npm run test"
