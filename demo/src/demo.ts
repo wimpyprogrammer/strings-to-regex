@@ -9,6 +9,7 @@ const $delimiter = document.querySelector<HTMLSelectElement>('.js-delimiter');
 const $caseSensitive = document.querySelector<HTMLInputElement>('.js-case');
 const $trim = document.querySelector<HTMLInputElement>('.js-trim');
 const $output = document.querySelector<HTMLTextAreaElement>('.js-output');
+const $submit = document.querySelector<HTMLButtonElement>('.js-generate');
 
 function generatePattern(words: string): RegExp {
 	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
@@ -52,10 +53,7 @@ function onClickGenerate(): void {
 	const pattern = generatePattern(words);
 	displayPattern(pattern);
 }
-
-document
-	.querySelector('.js-generate')
-	.addEventListener('click', onClickGenerate);
+$submit.addEventListener('click', onClickGenerate);
 
 ((): void => {
 	const exampleInput =
