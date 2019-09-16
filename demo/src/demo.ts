@@ -4,13 +4,17 @@ import { parseString, WhitespaceHandling } from './utils/wordList';
 
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
 
-const $form = document.querySelector<HTMLFormElement>('.js-form');
-const $input = document.querySelector<HTMLTextAreaElement>('.js-words');
-const $delimiter = document.querySelector<HTMLSelectElement>('.js-delimiter');
-const $caseSensitive = document.querySelector<HTMLInputElement>('.js-case');
-const $trim = document.querySelector<HTMLInputElement>('.js-trim');
-const $output = document.querySelector<HTMLTextAreaElement>('.js-output');
-const $submit = document.querySelector<HTMLButtonElement>('.js-generate');
+function getElement<T extends Element>(selector: string): T {
+	return document.querySelector(selector) as T;
+}
+
+const $form = getElement<HTMLFormElement>('.js-form');
+const $input = getElement<HTMLTextAreaElement>('.js-words');
+const $delimiter = getElement<HTMLSelectElement>('.js-delimiter');
+const $caseSensitive = getElement<HTMLInputElement>('.js-case');
+const $trim = getElement<HTMLInputElement>('.js-trim');
+const $output = getElement<HTMLTextAreaElement>('.js-output');
+const $submit = getElement<HTMLButtonElement>('.js-generate');
 
 function generatePattern(words: string): RegExp {
 	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
