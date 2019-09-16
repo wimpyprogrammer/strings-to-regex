@@ -31,18 +31,8 @@
       "**/src/**/?*.(js|ts)",
       "!demo/src/demo.ts"
     ],
-    "restoreMocks": true,
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    },
-    "testMatch": [
-      "**/src/**/?*.spec.(js|ts)"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ]
+    "preset": "ts-jest",
+    "restoreMocks": true
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
