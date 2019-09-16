@@ -29,6 +29,7 @@
   "jest": {
     "collectCoverageFrom": [
       "**/src/**/?*.(js|ts)",
+      "!demo/src/utils/auto-expand-field.ts",
       "!demo/src/demo.ts"
     ],
     "preset": "ts-jest",

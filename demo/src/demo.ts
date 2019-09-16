@@ -1,4 +1,5 @@
 import { condense, condenseIgnoreCase } from '../../src/index';
+import { autoExpandTextarea } from './utils/auto-expand-field';
 import { parseString, WhitespaceHandling } from './utils/wordList';
 
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
@@ -29,6 +30,7 @@ function generatePattern(words: string): RegExp {
 let clearSuccessIndicatorHandle: number;
 function displayPattern(pattern: RegExp): void {
 	$output.value = pattern.toString();
+	$output.dispatchEvent(new Event('input'));
 
 	// Temporarily style the output box as valid
 	$output.classList.add('is-valid');
@@ -55,12 +57,16 @@ function onClickGenerate(): void {
 }
 $submit.addEventListener('click', onClickGenerate);
 
+autoExpandTextarea($input);
+autoExpandTextarea($output);
+
 ((): void => {
 	const exampleInput =
 		'Alabama, Alaska, Arizona, Arkansas, California, ' +
 		'Colorado, Connecticut, Delaware, Florida, Georgia';
 
 	$input.value = exampleInput;
+	$input.dispatchEvent(new Event('input'));
 	const pattern = generatePattern(exampleInput);
 	displayPattern(pattern);
 })();
