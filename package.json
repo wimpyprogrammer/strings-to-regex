@@ -29,7 +29,6 @@
   "jest": {
     "collectCoverageFrom": [
       "**/src/**/?*.(js|ts)",
-      "!**/src/**/?*.d.ts",
       "!demo/src/demo.ts"
     ],
     "restoreMocks": true,
