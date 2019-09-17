@@ -14,7 +14,17 @@ const $delimiter = getElement<HTMLSelectElement>('.js-delimiter');
 const $caseSensitive = getElement<HTMLInputElement>('.js-case');
 const $trim = getElement<HTMLInputElement>('.js-trim');
 const $output = getElement<HTMLTextAreaElement>('.js-output');
+const $expandLink = getElement<HTMLAnchorElement>('.js-link-expand');
 const $submit = getElement<HTMLButtonElement>('.js-generate');
+
+function generateExpandUrl(delimiter: string, pattern: RegExp): URL {
+	const query = new URLSearchParams({
+		delimiter,
+		numResults: '500',
+		pattern: pattern.toString(),
+	});
+	return new URL(`https://www.wimpyprogrammer.com/regex-to-strings/?${query}`);
+}
 
 function generatePattern(words: string): RegExp {
 	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
@@ -58,6 +68,9 @@ function onClickGenerate(): void {
 	const words = $input.value;
 	const pattern = generatePattern(words);
 	displayPattern(pattern);
+
+	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
+	$expandLink.href = generateExpandUrl(delimiter, pattern).toString();
 }
 $submit.addEventListener('click', onClickGenerate);
 
@@ -73,4 +86,7 @@ autoExpandTextarea($output);
 	$input.dispatchEvent(new Event('input'));
 	const pattern = generatePattern(exampleInput);
 	displayPattern(pattern);
+
+	const delimiter = $delimiter.options[$delimiter.selectedIndex].value;
+	$expandLink.href = generateExpandUrl(delimiter, pattern).toString();
 })();
