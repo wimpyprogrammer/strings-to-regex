@@ -12,13 +12,17 @@
 		"ecmaVersion": 2018
 	},
 	"rules": {
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": ["**/*.spec.{js,ts}"]
+			}
+		],
 		"import/prefer-default-export": "off"
 	},
 	"settings": {
 		"import/parsers": {
-			"@typescript-eslint/parser": [
-				".ts"
-			]
+			"@typescript-eslint/parser": [".ts"]
 		},
 		"import/resolver": {
 			"typescript": {}

@@ -1,117 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>
+			Strings to RegEx - Generate a concise Regular Expression matching given
+			words/phrases
+		</title>
+		<meta
+			name="description"
+			content="A tool to generate a concise Regular Expression matching given words/phrases."
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Regular Expression Pattern Creator</title>
-	<meta name="description" content="A tool to generate a concise Regular Expression matching given words/phrases.">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Google Tag Manager -->
+		<script>
+			(function(w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js',
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-W4BK9P');
+		</script>
+		<!-- End Google Tag Manager -->
 
-	<!-- Google Tag Manager -->
-	<script>
-		(function (w, d, s, l, i) {
-			w[l] = w[l] || []; w[l].push({
-				'gtm.start':
-					new Date().getTime(), event: 'gtm.js'
-			}); var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-W4BK9P');
-	</script>
-	<!-- End Google Tag Manager -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css"
+			integrity="sha256-O7FfDCaEf9kSRN9b9kmWu8C3rhL1hxEpPHp+CTZ4pMk="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="styles.css" />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css"
-	 integrity="sha256-O7FfDCaEf9kSRN9b9kmWu8C3rhL1hxEpPHp+CTZ4pMk=" crossorigin="anonymous" />
-	<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.from,Map,Set&flags=gated"></script>
+	</head>
 
-	<script src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.from,Map,Set&flags=gated"></script>
-</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-W4BK9P"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"
+			>
+			</iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
 
-<body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript>
-		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4BK9P" height="0" width="0" style="display:none;visibility:hidden">
-		</iframe>
-	</noscript>
-	<!-- End Google Tag Manager (noscript) -->
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<div class="container">
-			<a class="navbar-brand" href="javascript:void(0)">RegEx Pattern Creator</a>
-		</div>
-	</nav>
-
-	<div class="jumbotron">
-		<form class="container js-form">
-			<p class="lead">Generate a concise Regular Expression.</p>
-
-			<div class="form-group">
-				<label for="words">
-					Words or phrases the Regular Expression should match:
-				</label>
-				<textarea required id="words" class="form-control js-words"></textarea>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<div class="container">
+				<a class="navbar-brand" href="javascript:void(0)">Strings to RegEx</a>
+				<a
+					href="https://github.com/wimpyprogrammer/strings-to-regex"
+					title="See strings-to-regex on GitHub"
+				>
+					<svg aria-hidden="true" height="32" viewBox="0 0 16 16" width="32">
+						<path
+							fill-rule="evenodd"
+							d="M8 0a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2 .4-2.5-.5-2.7-1 0-.1-.5-.9-.8-1-.3-.2-.7-.6 0-.6.6 0 1 .6 1.2.8.7 1.2 1.9 1 2.4.7 0-.5.2-.9.5-1-1.8-.3-3.7-1-3.7-4 0-.9.3-1.6.8-2.2 0-.2-.3-1 .1-2 0 0 .7-.3 2.2.7a7.4 7.4 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.1.5.6.8 1.3.8 2.2 0 3-1.9 3.7-3.6 4 .3.2.5.7.5 1.4v2.2c0 .2.1.5.5.4A8 8 0 0 0 16 8a8 8 0 0 0-8-8z"
+						/>
+					</svg>
+				</a>
 			</div>
+		</nav>
 
-			<div class="form-inline">
+		<div class="jumbotron">
+			<form class="container js-form">
+				<p class="lead">Generate a concise Regular Expression.</p>
+
 				<div class="form-group">
-					<label for="delimiter">
-						Words/phrases are separated by:
+					<label for="words">
+						Words or phrases the Regular Expression should match:
 					</label>
-					<select id="delimiter" class="form-control js-delimiter track-field">
-						<option value="," selected>Comma</option>
-						<option value=" ">Space</option>
-						<option value="&#10;">Newline</option>
-					</select>
+					<textarea class="form-control js-words" required rows="1"></textarea>
 				</div>
 
-				<div class="form-group form-check">
-					<input type="checkbox" checked id="case" class="form-check-input js-case track-field">
-					<label class="form-check-label" for="case">
-						Case-sensitive
-					</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="delimiter">
+							Words/phrases are separated by:
+						</label>
+						<select
+							id="delimiter"
+							class="form-control js-delimiter track-field"
+						>
+							<option value="," selected>Comma</option>
+							<option value=" ">Space</option>
+							<option value="&#10;">Newline</option>
+						</select>
+					</div>
+
+					<div class="form-group form-check">
+						<input
+							type="checkbox"
+							checked
+							id="case"
+							class="form-check-input js-case track-field"
+						/>
+						<label class="form-check-label" for="case">
+							Case-sensitive
+						</label>
+					</div>
+
+					<div class="form-group form-check">
+						<input
+							type="checkbox"
+							checked
+							id="trim"
+							class="form-check-input js-trim track-field"
+						/>
+						<label class="form-check-label" for="trim">
+							Trim whitespace surrounding each word/phrase
+						</label>
+					</div>
 				</div>
 
-				<div class="form-group form-check">
-					<input type="checkbox" checked id="trim" class="form-check-input js-trim track-field">
-					<label class="form-check-label" for="trim">
-						Trim whitespace surrounding each word/phrase
-					</label>
+				<div class="form-group submit-form-group">
+					<button
+						type="button"
+						class="btn btn-lg btn-primary js-generate track-generate"
+					>
+						Generate Regular Expression
+					</button>
 				</div>
-			</div>
+			</form>
+		</div>
 
-			<div class="form-group submit-form-group">
-				<button type="button" class="btn btn-lg btn-primary js-generate track-generate">
-					Generate Regular Expression
-				</button>
-			</div>
-		</form>
-	</div>
+		<div class="container">
+			<section class="output">
+				<div class="form-group">
+					<label for="output">
+						Matching Regular Expression:
+					</label>
+					<textarea
+						readonly="readonly"
+						id="output"
+						class="form-control js-output"
+						rows="1"
+					></textarea>
+					<a class="form-text js-link-expand" href="javascript:void(0)">
+						Expand expression with <code>regex-to-strings</code>
+					</a>
+				</div>
+			</section>
 
-	<div class="container">
-		<section class="output">
-			<div class="form-group">
-				<label for="output">
-					Matching Regular Expression:
-				</label>
-				<textarea readonly="readonly" id="output" class="form-control js-output"></textarea>
-			</div>
-		</section>
+			<hr />
 
-		<hr>
+			<footer>
+				<p class="float-left">
+					&copy;
+					<a href="http://www.wimpyprogrammer.com/">WimpyProgrammer.com</a> 2018
+				</p>
+				<p class="float-right">
+					<a href="https://github.com/wimpyprogrammer/strings-to-regex"
+						>Fork me on GitHub</a
+					>
+					or
+					<a href="https://github.com/wimpyprogrammer/strings-to-regex/issues"
+						>report an issue</a
+					>
+				</p>
+			</footer>
+		</div>
 
-		<footer>
-			<p class="float-left">
-				&copy; <a href="http://www.wimpyprogrammer.com/">WimpyProgrammer.com</a> 2018
-			</p>
-			<p class="float-right">
-				<a href="https://github.com/wimpyprogrammer/strings-to-regex">Fork me on GitHub</a>
-				or <a href="https://github.com/wimpyprogrammer/strings-to-regex/issues">report an issue</a>
-			</p>
-		</footer>
-	</div>
-
-	<script type="text/javascript" src="demo.js"></script>
-</body>
-
+		<script type="text/javascript" src="lib/demo.js"></script>
+	</body>
 </html>

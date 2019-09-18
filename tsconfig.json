@@ -5,7 +5,13 @@
 		"baseUrl": "./",
 		"downlevelIteration": true,
 		"rootDir": "./",
-		"lib": ["dom", "es2017"],
+		"lib": [
+			"es5",
+			"es2015.collection",
+			"es2015.core",
+			"es2015.iterable",
+			"es2017.object"
+		],
 		"module": "es2015",
 		"noEmit": true,
 		"noImplicitAny": true,

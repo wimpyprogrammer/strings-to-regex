@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"es5",
+			"es2015.collection",
+			"es2015.core",
+			"es2015.iterable",
+			"es2017.object"
+		]
+	},
+	"extends": "../tsconfig.json",
+	"include": ["../src", "./src", "./webpack.config.js"]
+}
