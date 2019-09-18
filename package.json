@@ -16,7 +16,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "build": "npm run clean && babel src -d lib --extensions '.js,.ts'",
+    "build": "npm run clean && babel src -d lib --extensions '.js,.ts' --ignore '**/*.spec.js','**/*.spec.ts'",
     "build-demo": "webpack --config demo/webpack.config.js",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
