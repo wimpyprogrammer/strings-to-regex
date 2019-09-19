@@ -47,6 +47,14 @@ describe('build', () => {
 		expect(build(trie)).toBe('foo bar');
 	});
 
+	it('escapes characters with special meaning in RegEx', () => {
+		const specialChars = String.raw`foo.?+|(){}^$\[]bar`;
+		const trie = CharTrie.create({ [specialChars]: {} });
+
+		const pattern = String.raw`foo\.\?\+\|\(\)\{\}\^\$\\\[\]bar`;
+		expect(build(trie)).toBe(pattern);
+	});
+
 	it('processes complex trie', () => {
 		const trie = CharTrie.create({
 			M: {
