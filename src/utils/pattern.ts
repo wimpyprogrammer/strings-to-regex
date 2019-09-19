@@ -1,3 +1,4 @@
+import escapeStringRegexp from 'escape-string-regexp';
 import { CharTrie } from '../types/charTrie';
 
 /**
@@ -10,7 +11,7 @@ import { CharTrie } from '../types/charTrie';
 export function build(charTrie: CharTrie): string {
 	const patternSegments = Array.from(
 		[...charTrie],
-		([head, suffixTrie]) => `${head}${build(suffixTrie)}`
+		([head, suffixTrie]) => `${escapeStringRegexp(head)}${build(suffixTrie)}`
 	);
 
 	let pattern = patternSegments.join('|');

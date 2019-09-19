@@ -1,9 +1,9 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
 		"downlevelIteration": true,
+		"esModuleInterop": true,
 		"rootDir": "./",
 		"lib": [
 			"es5",
