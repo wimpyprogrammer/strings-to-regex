@@ -41,7 +41,7 @@ function generatePattern(words: string): RegExp {
 	return pattern;
 }
 
-let clearSuccessIndicatorHandle: number;
+let clearSuccessIndicatorHandle: NodeJS.Timeout;
 function displayPattern(pattern: RegExp): void {
 	$output.value = pattern.toString();
 	$output.dispatchEvent(new Event('input'));

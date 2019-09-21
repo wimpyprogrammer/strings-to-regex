@@ -2,8 +2,10 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"baseUrl": "./",
+		"checkJs": true,
 		"downlevelIteration": true,
 		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 		"rootDir": "./",
 		"lib": [
 			"es5",
@@ -13,13 +15,14 @@
 			"es2017.object"
 		],
 		"module": "es2015",
+		"moduleResolution": "node",
 		"noEmit": true,
-		"noImplicitAny": true,
+		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"pretty": true,
-		"skipLibCheck": true,
-		"sourceMap": true
+		"sourceMap": true,
+		"strict": true
 	},
 	"include": ["src"]
 }

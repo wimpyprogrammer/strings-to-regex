@@ -14,7 +14,7 @@ describe('parseString', () => {
 			expect(wordList).toEqual([]);
 		}
 
-		['', null, undefined].forEach(testInput);
+		['', null, undefined].forEach(val => testInput(val as string));
 	});
 
 	it('returns entire input string in array when delimiter is empty', () => {
@@ -23,7 +23,7 @@ describe('parseString', () => {
 			expect(wordList).toEqual([' some input string ']);
 		}
 
-		['', null, undefined].forEach(testDelimiter);
+		['', null, undefined].forEach(val => testDelimiter(val as string));
 	});
 
 	it('returns entire input string in array when delimiter is not present in input string', () => {
