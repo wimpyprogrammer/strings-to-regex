@@ -1,19 +1,28 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
+		"checkJs": true,
 		"downlevelIteration": true,
-		"rootDir": "./",
-		"lib": ["dom", "es2017"],
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": [
+			"es5",
+			"es2015.collection",
+			"es2015.core",
+			"es2015.iterable",
+			"es2017.object"
+		],
 		"module": "es2015",
+		"moduleResolution": "node",
 		"noEmit": true,
-		"noImplicitAny": true,
+		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
+		"outDir": "./lib",
 		"pretty": true,
-		"skipLibCheck": true,
-		"sourceMap": true
+		"sourceMap": true,
+		"strict": true
 	},
 	"include": ["src"]
 }

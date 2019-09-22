@@ -1,6 +1,6 @@
-import { Char, ICharTrie } from '../types/charTrie';
+import { Char, CharTrie } from '../types/charTrie';
 
-const leafNode = new Map() as ICharTrie;
+const leafNode = new Map() as CharTrie;
 
 function groupWordsByHeadChar(
 	words: string[],
@@ -30,13 +30,20 @@ function groupWordsByHeadChar(
  * @param tailGroup A character trie of suffixes to headChar
  * @returns A character trie with tailGroup branching from headChar
  */
-function mergeGroups(headChar: Char, tailGroup: ICharTrie): ICharTrie {
+function mergeGroups(headChar: Char, tailGroup: CharTrie): CharTrie {
 	if (tailGroup.size !== 1) {
-		return new Map([[headChar, tailGroup]]) as ICharTrie;
+		return new Map([[headChar, tailGroup]]) as CharTrie;
 	}
 
 	const [onlyTail, onBranch] = tailGroup.entries().next().value;
-	return new Map([[headChar + onlyTail, onBranch]]) as ICharTrie;
+	return new Map([[headChar + onlyTail, onBranch]]) as CharTrie;
+}
+
+/** @borrows buildUnique as build */
+export function build(words: string[]): CharTrie {
+	const uniqueWords = [...new Set(words)];
+	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	return buildUnique(uniqueWords);
 }
 
 /**
@@ -45,7 +52,7 @@ function mergeGroups(headChar: Char, tailGroup: ICharTrie): ICharTrie {
  * @param words A list of words to parse
  * @returns A trie of words grouped by the initial characters they share
  */
-function buildUnique(words: string[]): ICharTrie {
+function buildUnique(words: string[]): CharTrie {
 	if (words.length === 0) {
 		return leafNode;
 	}
@@ -56,7 +63,7 @@ function buildUnique(words: string[]): ICharTrie {
 		// End of the target word reached. Include an empty string to signify that
 		// a word ends at this spot, and group any remaining words in the trie.
 		const nonEmptyWords = words.filter(word => word !== '');
-		return new Map([['', leafNode], ...build(nonEmptyWords)]) as ICharTrie;
+		return new Map([['', leafNode], ...build(nonEmptyWords)]) as CharTrie;
 	}
 
 	// Begin a new trie containing all words starting with the same letter as wordToMatch
@@ -68,11 +75,5 @@ function buildUnique(words: string[]): ICharTrie {
 
 	const groupWithChildren = mergeGroups(charToMatch, tailsMatchedGrouped);
 
-	return new Map([...groupWithChildren, ...build(wordsMissed)]) as ICharTrie;
-}
-
-/** @borrows buildUnique as build */
-export function build(words: string[]): ICharTrie {
-	const uniqueWords = [...new Set(words)];
-	return buildUnique(uniqueWords);
+	return new Map([...groupWithChildren, ...build(wordsMissed)]) as CharTrie;
 }
