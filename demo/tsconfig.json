@@ -10,5 +10,5 @@
 		]
 	},
 	"extends": "../tsconfig.json",
-	"include": ["../src", "./src", "./webpack.config.js"]
+	"include": ["../src", "./src"]
 }
