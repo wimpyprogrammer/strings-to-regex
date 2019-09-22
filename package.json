@@ -13,6 +13,7 @@
   "files": [
     "lib/"
   ],
+  "sideEffects": false,
   "engines": {
     "node": ">=8"
   },
