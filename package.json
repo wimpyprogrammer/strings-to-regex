@@ -10,7 +10,9 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": ["lib/"],
+  "files": [
+    "lib/"
+  ],
   "engines": {
     "node": ">=8"
   },
