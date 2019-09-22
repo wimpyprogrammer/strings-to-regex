@@ -24,7 +24,7 @@
     "lint-demo": "tsc -p ./demo/tsconfig.json; eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
     "test": "jest --coverage",
-    "travisci": "npm run lint && npm run test"
+    "travisci": "npm run lint && npm run test && codecov"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -46,6 +46,7 @@
     "@types/node": "^12.7.5",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
+    "codecov": "^3.6.1",
     "eslint": "6.1.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "^6.3.0",
