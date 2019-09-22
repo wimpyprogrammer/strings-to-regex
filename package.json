@@ -9,15 +9,15 @@
   "author": "Drew Keller <drew@wimpyprogrammer.com>",
   "license": "MIT",
   "main": "lib/index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "types": "./lib/index.d.ts",
+  "files": ["lib/"],
   "engines": {
     "node": ">=8"
   },
   "scripts": {
-    "build": "npm run clean && babel src -d lib --extensions '.js,.ts' --ignore '**/*.spec.js','**/*.spec.ts'",
+    "build": "npm run clean && babel src -d lib --extensions '.js,.ts' --ignore '**/*.spec.js','**/*.spec.ts' && npm run build-types",
     "build-demo": "webpack --config demo/webpack.config.js",
+    "build-types": "tsc -p ./tsconfig.types.json",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
     "lint": "tsc -p ./tsconfig.json; eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",

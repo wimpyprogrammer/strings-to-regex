@@ -6,7 +6,6 @@
 		"downlevelIteration": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"rootDir": "./",
 		"lib": [
 			"es5",
 			"es2015.collection",
@@ -20,6 +19,7 @@
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
+		"outDir": "./lib",
 		"pretty": true,
 		"sourceMap": true,
 		"strict": true
