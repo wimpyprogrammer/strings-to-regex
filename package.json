@@ -26,6 +26,9 @@
     "lint": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
     "lint-demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
+    "prepublish": "npx publish-please guard",
+    "publish-please": "npx publish-please",
+    "publish-please-prereqs": "npm run lint && npm run test && npm run build",
     "test": "jest --coverage",
     "travisci": "npm run lint && npm run test && codecov && npx snyk test"
   },
