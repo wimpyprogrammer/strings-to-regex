@@ -41,7 +41,7 @@ function generatePattern(words: string): RegExp {
 	return pattern;
 }
 
-let clearSuccessIndicatorHandle: NodeJS.Timeout;
+let clearSuccessIndicatorHandle: number;
 function displayPattern(pattern: RegExp): void {
 	$output.value = pattern.toString();
 	$output.dispatchEvent(new Event('input'));
@@ -50,7 +50,7 @@ function displayPattern(pattern: RegExp): void {
 	$output.classList.add('is-valid');
 
 	clearTimeout(clearSuccessIndicatorHandle);
-	clearSuccessIndicatorHandle = setTimeout(
+	clearSuccessIndicatorHandle = window.setTimeout(
 		() => $output.classList.remove('is-valid'),
 		1000
 	);
