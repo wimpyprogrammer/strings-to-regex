@@ -24,7 +24,7 @@
     "lint-demo": "tsc -p ./demo/tsconfig.json; eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
     "test": "jest --coverage",
-    "travisci": "npm run lint && npm run test && codecov"
+    "travisci": "npm run lint && npm run test && codecov && npx snyk test"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -69,5 +69,6 @@
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.0"
-  }
+  },
+  "snyk": true
 }
