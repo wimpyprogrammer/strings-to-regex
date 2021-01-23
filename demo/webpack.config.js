@@ -14,7 +14,6 @@ module.exports = {
 						loader: 'ts-loader',
 						options: {
 							compilerOptions: {
-								checkJs: false, // workaround for TypeStrong/ts-loader#702
 								noEmit: false,
 							},
 							configFile: resolve(__dirname, './tsconfig.json'),
