@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: '2'
 
       - name: Test on Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
