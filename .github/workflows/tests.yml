@@ -2,24 +2,27 @@ name: Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
   schedule:
     # 00:00 on Saturdays
-    - cron:  '0 0 * * SAT'
+    - cron: '0 0 * * SAT'
   workflow_dispatch:
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [10.x, 14.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: '2'
 
@@ -27,8 +30,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - run: npm install
       - run: npm run lint
+      - run: npm run lint-demo
+      - run: npm run build
+      - run: npm run build-demo
+      - run: npm run build-types
       - run: npm run test
 
       - name: Upload test coverage report to Codecov
