@@ -2,12 +2,12 @@ name: Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
   schedule:
     # 00:00 on Saturdays
-    - cron:  '0 0 * * SAT'
+    - cron: '0 0 * * SAT'
   workflow_dispatch:
 
 jobs:

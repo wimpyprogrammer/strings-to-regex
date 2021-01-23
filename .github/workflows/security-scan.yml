@@ -2,9 +2,9 @@ name: Security Scan
 
 on:
   push:
-    branches: [ develop, main ]
+    branches: [main, develop]
   pull_request:
-    branches: [ develop, main ]
+    branches: [main, develop]
   schedule:
     # 13:44 on Saturdays
     - cron: '44 13 * * 6'
@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
+        language: ['javascript']
 
     steps:
       - name: Checkout repository
