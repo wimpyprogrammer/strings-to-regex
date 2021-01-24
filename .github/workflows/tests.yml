@@ -35,7 +35,7 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test
-      - run: npx testpack-cli --keep={jest-when,regex-to-strings,ts-jest,typescript} **/*.spec.ts
+      - run: npx testpack-cli --keep={jest-when,regex-to-strings,ts-jest,typescript} -r={|\.\.?|$P|,|\.\.?([\/\\].*)|$P/lib$1|} **/*.spec.ts
 
       - name: Upload test coverage report to Codecov
         uses: codecov/codecov-action@v1
