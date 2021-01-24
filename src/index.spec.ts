@@ -2,7 +2,7 @@ import { when } from 'jest-when';
 import { CharTrie } from './types/charTrie';
 import * as patternUtils from './utils/pattern';
 import * as trieUtils from './utils/trie';
-import { condense, condenseIgnoreCase } from './index';
+import { condense, condenseIgnoreCase } from '.';
 
 describe('condense', () => {
 	it('builds pattern from trie of words', () => {

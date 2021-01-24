@@ -18,17 +18,19 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run clean && babel src -d lib --extensions '.js,.ts' --ignore '**/*.spec.js','**/*.spec.ts' && npm run build-types",
-    "build-demo": "wp --config demo/webpack.config.js",
-    "build-types": "tsc -p ./tsconfig.types.json",
+    "build": "run-s clean build:*",
+    "build:src": "babel src -d lib --extensions '.js,.ts'",
+    "build:demo": "wp --config demo/webpack.config.js",
+    "build:types": "tsc -p ./tsconfig.types.json",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**'",
-    "lint": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
-    "lint-demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
+    "lint": "run-s lint:*",
+    "lint:src": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
+    "lint:demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
     "precommit": "pretty-quick --staged",
     "prepublish": "npx publish-please guard",
     "publish-please": "npx publish-please",
-    "publish-please-prereqs": "npm run lint && npm run test && npm run build",
+    "publish-please-prereqs": "run-s lint test build",
     "test": "jest --coverage"
   },
   "jest": {
@@ -60,6 +62,7 @@
     "husky": "^0.14.3",
     "jest": "^26.0.0",
     "jest-when": "^2.7.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.13.7",
     "pretty-quick": "^1.6.0",
     "regenerator-runtime": "^0.13.3",
