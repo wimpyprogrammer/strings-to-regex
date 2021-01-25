@@ -1,5 +1,3 @@
-import 'regenerator-runtime/runtime';
-
 import { expandAll } from 'regex-to-strings';
 import { CharTrie } from '../types/charTrie';
 import { build } from './pattern';
