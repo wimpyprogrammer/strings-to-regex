@@ -42,7 +42,7 @@ function mergeGroups(headChar: Char, tailGroup: CharTrie): CharTrie {
 /** @borrows buildUnique as build */
 export function build(words: string[]): CharTrie {
 	const uniqueWords = [...new Set(words)];
-	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	// eslint-disable-next-line no-use-before-define
 	return buildUnique(uniqueWords);
 }
 
