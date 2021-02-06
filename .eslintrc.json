@@ -1,9 +1,9 @@
 {
 	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint"],
 	"extends": [
 		"airbnb-base",
 		"plugin:jest/recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"prettier",
 		"prettier/@typescript-eslint"
@@ -12,6 +12,7 @@
 		"ecmaVersion": 2018
 	},
 	"rules": {
+		"@typescript-eslint/no-shadow": "error",
 		"import/extensions": [
 			"error",
 			{
@@ -24,7 +25,8 @@
 				"devDependencies": ["**/*.spec.{js,ts}"]
 			}
 		],
-		"import/prefer-default-export": "off"
+		"import/prefer-default-export": "off",
+		"no-shadow": "off"
 	},
 	"settings": {
 		"import/parsers": {

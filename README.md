@@ -3,8 +3,8 @@
 [![npm package](https://badge.fury.io/js/strings-to-regex.svg)](https://badge.fury.io/js/strings-to-regex)
 ![node version](https://img.shields.io/node/v/strings-to-regex.svg)
 ![npm type definitions](https://img.shields.io/npm/types/strings-to-regex)
-[![Build Status](https://travis-ci.org/wimpyprogrammer/strings-to-regex.svg?branch=master)](https://travis-ci.org/wimpyprogrammer/strings-to-regex)
-[![codecov](https://codecov.io/gh/wimpyprogrammer/strings-to-regex/branch/master/graph/badge.svg)](https://codecov.io/gh/wimpyprogrammer/strings-to-regex)
+![Tests status](https://github.com/wimpyprogrammer/strings-to-regex/workflows/Tests/badge.svg)
+[![codecov](https://codecov.io/gh/wimpyprogrammer/strings-to-regex/branch/main/graph/badge.svg)](https://codecov.io/gh/wimpyprogrammer/strings-to-regex)
 [![Known Vulnerabilities](https://snyk.io/test/github/wimpyprogrammer/strings-to-regex/badge.svg)](https://snyk.io/test/github/wimpyprogrammer/strings-to-regex)
 
 Generate a compact Regular Expression that matches a finite set.

@@ -8,7 +8,7 @@ export function condense(wordList: string[]): RegExp {
 }
 
 export function condenseIgnoreCase(wordList: string[]): RegExp {
-	const wordListLowercase = wordList.map(word => word.toLowerCase());
+	const wordListLowercase = wordList.map((word) => word.toLowerCase());
 	const caseSensitiveRegex = condense(wordListLowercase);
 	return new RegExp(caseSensitiveRegex, 'i');
 }

@@ -9,7 +9,7 @@ function groupWordsByHeadChar(
 	const matched: string[] = [];
 	const missed: string[] = [];
 
-	words.forEach(word => {
+	words.forEach((word) => {
 		if (word[0] === firstChar) {
 			matched.push(word);
 		} else {
@@ -42,7 +42,7 @@ function mergeGroups(headChar: Char, tailGroup: CharTrie): CharTrie {
 /** @borrows buildUnique as build */
 export function build(words: string[]): CharTrie {
 	const uniqueWords = [...new Set(words)];
-	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	// eslint-disable-next-line no-use-before-define
 	return buildUnique(uniqueWords);
 }
 
@@ -62,7 +62,7 @@ function buildUnique(words: string[]): CharTrie {
 	if (wordToMatch === '') {
 		// End of the target word reached. Include an empty string to signify that
 		// a word ends at this spot, and group any remaining words in the trie.
-		const nonEmptyWords = words.filter(word => word !== '');
+		const nonEmptyWords = words.filter((word) => word !== '');
 		return new Map([['', leafNode], ...build(nonEmptyWords)]) as CharTrie;
 	}
 
@@ -70,7 +70,7 @@ function buildUnique(words: string[]): CharTrie {
 	const charToMatch = wordToMatch[0];
 	const [wordsMatched, wordsMissed] = groupWordsByHeadChar(words, charToMatch);
 
-	const tailsMatched = wordsMatched.map(word => word.substring(1));
+	const tailsMatched = wordsMatched.map((word) => word.substring(1));
 	const tailsMatchedGrouped = build(tailsMatched);
 
 	const groupWithChildren = mergeGroups(charToMatch, tailsMatchedGrouped);

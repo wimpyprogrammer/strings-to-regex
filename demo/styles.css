@@ -47,6 +47,12 @@ select:invalid {
 	transition: border-color 0.6s ease-out;
 }
 
+footer:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
 @media (min-width: 576px) {
 	label + select {
 		margin-left: 0.5em;

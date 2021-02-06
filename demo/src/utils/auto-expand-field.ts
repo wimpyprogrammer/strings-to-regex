@@ -1,19 +1,19 @@
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["field"] }] */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+type anyFn = (...args: unknown[]) => void;
+
 /**
  * @see https://gist.github.com/fr-ser/ded7690b245223094cd876069456ed6c
  */
-function debounce<F extends Function>(func: F, wait: number): F {
+function debounce<F extends anyFn>(func: F, wait: number): F {
 	let timeoutID: number;
 
-	return (function debounced(this: any, ...args: any[]) {
+	return (function debounced(this: unknown, ...args: unknown[]) {
 		clearTimeout(timeoutID);
 
 		timeoutID = window.setTimeout(() => func.apply(this, args), wait);
-	} as any) as F;
+	} as unknown) as F;
 }
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Grow or shrink a <textarea> field's height to fit its contents.

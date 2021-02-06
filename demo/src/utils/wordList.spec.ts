@@ -1,69 +1,48 @@
 import { parseString, WhitespaceHandling } from './wordList';
 
-interface TestCase {
-	delimiter: string;
-	inputString: string;
-}
-
 const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
 
 describe('parseString', () => {
-	it('returns an empty array when input string is empty', () => {
-		function testInput(input: string): void {
-			const wordList = parseString(input, ',', Preserve);
+	it.each(['', null, undefined])(
+		'returns an empty array when input string is %p',
+		input => {
+			const wordList = parseString(input as string, ',', Preserve);
 			expect(wordList).toEqual([]);
 		}
+	);
 
-		['', null, undefined].forEach(val => testInput(val as string));
-	});
-
-	it('returns entire input string in array when delimiter is empty', () => {
-		function testDelimiter(delimiter: string): void {
+	it.each(['', null, undefined])(
+		'returns entire input string in array when delimiter is %p',
+		testDelimiter => {
+			const delimiter = testDelimiter as string;
 			const wordList = parseString(' some input string ', delimiter, Preserve);
 			expect(wordList).toEqual([' some input string ']);
 		}
+	);
 
-		['', null, undefined].forEach(val => testDelimiter(val as string));
-	});
-
-	it('returns entire input string in array when delimiter is not present in input string', () => {
-		function testDelimiter(delimiter: string): void {
+	it.each([',', '\n', '\t'])(
+		'returns entire input string in array when delimiter %p is not present in input string',
+		delimiter => {
 			const wordList = parseString(' some input string ', delimiter, Preserve);
 			expect(wordList).toEqual([' some input string ']);
 		}
+	);
 
-		[',', '\n', '\t'].forEach(testDelimiter);
+	it.each([
+		['foo,Bar, b@z ', ','],
+		['foo	Bar	 b@z ', '\t'],
+		['fooaaaBaraaa b@z ', 'aaa'],
+	])('splits input string %p by delimiter %p', (inputString, delimiter) => {
+		const wordList = parseString(inputString, delimiter, Preserve);
+		expect(wordList).toEqual(['foo', 'Bar', ' b@z ']);
 	});
 
-	it('splits input string by delimiter', () => {
-		const expectedResult = ['foo', 'Bar', ' b@z '];
-		const testCases: TestCase[] = [
-			{ delimiter: ',', inputString: 'foo,Bar, b@z ' },
-			{ delimiter: '\t', inputString: 'foo	Bar	 b@z ' },
-			{ delimiter: 'aaa', inputString: 'fooaaaBaraaa b@z ' },
-		];
-
-		function testSplit({ delimiter, inputString }: TestCase): void {
-			const wordList = parseString(inputString, delimiter, Preserve);
-			expect(wordList).toEqual(expectedResult);
-		}
-
-		testCases.forEach(testSplit);
-	});
-
-	it('splits input string by whitespace delimiter', () => {
-		const expectedResult = ['foo', 'Bar', 'b@z', ''];
-		const testCases: TestCase[] = [
-			{ delimiter: ' ', inputString: 'foo Bar b@z ' },
-			{ delimiter: '  ', inputString: 'foo  Bar  b@z  ' },
-		];
-
-		function testSplit({ delimiter, inputString }: TestCase): void {
-			const wordList = parseString(inputString, delimiter, Preserve);
-			expect(wordList).toEqual(expectedResult);
-		}
-
-		testCases.forEach(testSplit);
+	it.each([
+		['foo Bar b@z ', ' '],
+		['foo  Bar  b@z  ', '  '],
+	])('splits input string %p by delimiter %p', (inputString, delimiter) => {
+		const wordList = parseString(inputString, delimiter, Preserve);
+		expect(wordList).toEqual(['foo', 'Bar', 'b@z', '']);
 	});
 
 	it('splits multiline input string by newline delimiter', () => {
