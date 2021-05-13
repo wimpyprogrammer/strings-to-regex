@@ -19,7 +19,7 @@ export function parseString(
 	let words = raw.split(delimiter);
 
 	if (whitespaceHandling === WhitespaceHandling.TrimLeadingAndTrailing) {
-		words = words.map(word => word.trim());
+		words = words.map((word) => word.trim());
 	}
 
 	return words;

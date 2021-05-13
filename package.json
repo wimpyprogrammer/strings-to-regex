@@ -23,7 +23,7 @@
     "build:demo": "wp --config demo/webpack.config.js",
     "build:types": "tsc -p ./tsconfig.types.json",
     "clean": "rimraf lib/*",
-    "format": "prettier --write 'src/**'",
+    "format": "prettier --write 'src/**' 'demo/**'",
     "lint": "run-s lint:*",
     "lint:src": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
     "lint:demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",

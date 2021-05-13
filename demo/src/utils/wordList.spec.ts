@@ -5,7 +5,7 @@ const { Preserve, TrimLeadingAndTrailing } = WhitespaceHandling;
 describe('parseString', () => {
 	it.each(['', null, undefined])(
 		'returns an empty array when input string is %p',
-		input => {
+		(input) => {
 			const wordList = parseString(input as string, ',', Preserve);
 			expect(wordList).toEqual([]);
 		}
@@ -13,7 +13,7 @@ describe('parseString', () => {
 
 	it.each(['', null, undefined])(
 		'returns entire input string in array when delimiter is %p',
-		testDelimiter => {
+		(testDelimiter) => {
 			const delimiter = testDelimiter as string;
 			const wordList = parseString(' some input string ', delimiter, Preserve);
 			expect(wordList).toEqual([' some input string ']);
@@ -22,7 +22,7 @@ describe('parseString', () => {
 
 	it.each([',', '\n', '\t'])(
 		'returns entire input string in array when delimiter %p is not present in input string',
-		delimiter => {
+		(delimiter) => {
 			const wordList = parseString(' some input string ', delimiter, Preserve);
 			expect(wordList).toEqual([' some input string ']);
 		}
