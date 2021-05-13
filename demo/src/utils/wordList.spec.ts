@@ -40,10 +40,13 @@ describe('parseString', () => {
 	it.each([
 		['foo Bar b@z ', ' '],
 		['foo  Bar  b@z  ', '  '],
-	])('splits input string %p by delimiter %p', (inputString, delimiter) => {
-		const wordList = parseString(inputString, delimiter, Preserve);
-		expect(wordList).toEqual(['foo', 'Bar', 'b@z', '']);
-	});
+	])(
+		'splits input string %p by whitespace delimiter %p',
+		(inputString, delimiter) => {
+			const wordList = parseString(inputString, delimiter, Preserve);
+			expect(wordList).toEqual(['foo', 'Bar', 'b@z', '']);
+		}
+	);
 
 	it('splits multiline input string by newline delimiter', () => {
 		const input = `foo
