@@ -5,8 +5,7 @@
 		"airbnb-base",
 		"plugin:jest/recommended",
 		"plugin:@typescript-eslint/recommended",
-		"prettier",
-		"prettier/@typescript-eslint"
+		"prettier"
 	],
 	"parserOptions": {
 		"ecmaVersion": 2018
