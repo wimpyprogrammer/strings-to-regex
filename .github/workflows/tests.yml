@@ -38,7 +38,7 @@ jobs:
       - run: npx testpack-cli --keep=@types/jest,ts-jest,typescript src/e2e.spec.ts
 
       - name: Upload test coverage report to Codecov
-        uses: codecov/codecov-action@v2.0.2
+        uses: codecov/codecov-action@v2.0.3
         with:
           fail_ci_if_error: true
 
