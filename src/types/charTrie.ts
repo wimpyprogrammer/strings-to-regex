@@ -4,6 +4,7 @@ interface CharTrieData {
 
 export type Char = string;
 
+// eslint-disable-next-line no-use-before-define
 export class CharTrie extends Map<Char, CharTrie> {
 	public static create(trieData: CharTrieData): CharTrie {
 		const trieDataPairs = Object.entries(trieData);
