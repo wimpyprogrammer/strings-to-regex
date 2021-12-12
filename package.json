@@ -8,6 +8,9 @@
   "description": "Condense a set of words into a regular expression pattern",
   "author": "Drew Keller <drew@wimpyprogrammer.com>",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -27,9 +30,7 @@
     "lint": "run-s lint:*",
     "lint:src": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
     "lint:demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
-    "prepublish": "npx publish-please guard",
-    "publish-please": "npx publish-please",
-    "publish-please-prereqs": "run-s lint test build",
+    "release": "npx release-it",
     "test": "jest --coverage"
   },
   "jest": {
