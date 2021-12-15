@@ -25,6 +25,7 @@
     "build:src": "babel src -d lib --extensions '.js,.ts'",
     "build:demo": "wp --config demo/webpack.config.js",
     "build:types": "tsc -p ./tsconfig.types.json",
+    "changelog": "npx auto-changelog",
     "clean": "rimraf lib/*",
     "format": "prettier --write 'src/**' 'demo/**'",
     "lint": "run-s lint:*",
