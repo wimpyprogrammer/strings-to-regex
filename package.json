@@ -31,7 +31,7 @@
     "lint": "run-s lint:*",
     "lint:src": "tsc -p ./tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
     "lint:demo": "tsc -p ./demo/tsconfig.json && eslint ./demo --report-unused-disable-directives --ext .js,.ts --parser-options=project:./demo/tsconfig.json",
-    "release": "npx release-it",
+    "release": "npx release-it --no-increment",
     "test": "jest --coverage"
   },
   "jest": {
