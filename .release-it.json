@@ -1,0 +1,12 @@
+{
+	"hooks": {
+		"before:init": ["npm run lint", "npm test"],
+		"after:bump": "npm run build"
+	},
+	"git": {
+		"changelog": false,
+		"commit": false,
+		"requireBranch": "main",
+		"tagName": "${version}"
+	}
+}
