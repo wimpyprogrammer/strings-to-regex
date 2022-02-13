@@ -1,6 +1,5 @@
 package-lock.json
 
 coverage/
-demo/lib/
 lib/
 node_modules/
