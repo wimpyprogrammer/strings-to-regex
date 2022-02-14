@@ -31,12 +31,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm install
+      - run: yarn
       - run: npx prettier --check .
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run test
+      - run: yarn run build
+      - run: yarn run lint
+      - run: yarn run test
+
       - run: npx testpack-cli --keep=@types/jest,ts-jest,typescript src/e2e.spec.ts
+        working-directory: ./packages/strings-to-regex
 
       - name: Upload test coverage report to Codecov
         uses: codecov/codecov-action@v2.1.0

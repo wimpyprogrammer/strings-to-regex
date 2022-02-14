@@ -9,6 +9,6 @@
 			"es2017.object"
 		]
 	},
-	"extends": "../tsconfig.json",
-	"include": ["../src", "./src"]
+	"extends": "../packages/strings-to-regex/tsconfig.json",
+	"include": ["../packages/strings-to-regex/src", "./src"]
 }

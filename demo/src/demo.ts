@@ -1,4 +1,4 @@
-import { condense, condenseIgnoreCase } from '../../src';
+import { condense, condenseIgnoreCase } from 'strings-to-regex';
 import { autoExpandTextarea } from './utils/auto-expand-field';
 import { parseString, WhitespaceHandling } from './utils/wordList';
 
