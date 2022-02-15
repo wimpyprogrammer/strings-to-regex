@@ -26,10 +26,6 @@
     "release": "npx release-it --no-increment",
     "test": "jest --coverage"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "restoreMocks": true
-  },
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/jest-when": "^3.5.0",
