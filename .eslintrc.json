@@ -8,7 +8,8 @@
 		"prettier"
 	],
 	"parserOptions": {
-		"ecmaVersion": 2018
+		"ecmaVersion": 2018,
+		"project": ["./**/tsconfig.json", "./**/tsconfig.test.json"]
 	},
 	"rules": {
 		"@typescript-eslint/no-shadow": "error",

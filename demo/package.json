@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "wp --config webpack.config.js",
-    "lint": "tsc -p tsconfig.json && eslint ./src --report-unused-disable-directives --ext .js,.ts --parser-options=project:./tsconfig.json",
     "test": "exit 0"
   },
   "devDependencies": {

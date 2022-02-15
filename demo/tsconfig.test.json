@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"lib": ["es5"],
+		"noEmit": true,
+		"outDir": "lib",
+		"tsBuildInfoFile": "lib/test.tsbuildinfo",
+		"types": ["jest"]
+	},
+	"extends": "../tsconfig.json",
+	"include": ["src/**/*.spec.ts", "jest.config.js"],
+	"references": [{ "path": "./" }]
+}

@@ -1,14 +1,13 @@
 {
 	"compilerOptions": {
-		"lib": [
-			"dom",
-			"es5",
-			"es2015.collection",
-			"es2015.core",
-			"es2015.iterable",
-			"es2017.object"
-		]
+		"lib": ["dom", "es5"],
+		"noEmit": true,
+		"outDir": "lib",
+		"rootDir": "src",
+		"tsBuildInfoFile": "lib/demo.tsbuildinfo"
 	},
-	"extends": "../packages/strings-to-regex/tsconfig.json",
-	"include": ["../packages/strings-to-regex/src", "./src"]
+	"extends": "../tsconfig.json",
+	"exclude": ["**/*.spec.ts", "**/*.config.js"],
+	"include": ["src"],
+	"references": [{ "path": "../packages/strings-to-regex" }]
 }

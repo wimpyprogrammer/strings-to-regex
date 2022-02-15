@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"lib": ["es5", "es2015.core"],
+		"noEmit": true,
+		"outDir": "lib",
+		"tsBuildInfoFile": "lib/test.tsbuildinfo",
+		"types": ["jest", "jest-when"]
+	},
+	"extends": "../../tsconfig.json",
+	"include": ["src/**/*.spec.ts", "jest.config.js"],
+	"references": [{ "path": "./" }]
+}
