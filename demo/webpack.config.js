@@ -17,6 +17,7 @@ module.exports = {
 								noEmit: false,
 							},
 							configFile: resolve(__dirname, './tsconfig.json'),
+							projectReferences: true,
 						},
 					},
 				],

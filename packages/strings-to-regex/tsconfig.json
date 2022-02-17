@@ -1,11 +1,5 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
-		"baseUrl": "./",
-		"checkJs": true,
-		"downlevelIteration": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
 		"lib": [
 			"es5",
 			"es2015.collection",
@@ -13,16 +7,11 @@
 			"es2015.iterable",
 			"es2017.object"
 		],
-		"module": "es2015",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "./lib",
-		"pretty": true,
-		"sourceMap": true,
-		"strict": true
+		"outDir": "lib",
+		"rootDir": "src",
+		"tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
 	},
+	"extends": "../../tsconfig.json",
+	"exclude": ["**/*.spec.ts", "**/*.config.js"],
 	"include": ["src"]
 }
