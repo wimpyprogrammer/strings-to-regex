@@ -35,7 +35,7 @@ function mergeGroups(headChar: Char, tailGroup: CharTrie): CharTrie {
 		return new Map([[headChar, tailGroup]]) as CharTrie;
 	}
 
-	const [onlyTail, onBranch] = tailGroup.entries().next().value;
+	const [onlyTail, onBranch] = tailGroup.entries().next().value!;
 	return new Map([[headChar + onlyTail, onBranch]]) as CharTrie;
 }
 
