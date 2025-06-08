@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"lib": ["es5"],
 		"noEmit": true,
+		"isolatedModules": true,
 		"outDir": "lib",
 		"tsBuildInfoFile": "lib/test.tsbuildinfo",
 		"types": ["jest"]
