@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-import-resolver-typescript": "^4.2.2",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^27.0.4",
+    "eslint-plugin-jest": "^28.14.0",
     "prettier": "2.2.1"
   }
 }
