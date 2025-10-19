@@ -61,7 +61,7 @@ function onClickGenerate(): void {
 		if (!$form.reportValidity()) {
 			return;
 		}
-	} catch (ex) {
+	} catch {
 		// Ignore browsers that don't support reportValidity()
 	}
 
