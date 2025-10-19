@@ -1,3 +1,5 @@
+.pnp.cjs
+.pnp.loader.mjs
 coverage
 lib
 package.json
