@@ -33,7 +33,7 @@
     "jest-when": "^3.1.0",
     "regex-to-strings": "^2.0.1",
     "ts-jest": "^29.2.5",
-    "typescript": "^5.8.2"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
     "escape-string-regexp": "^4.0.0"

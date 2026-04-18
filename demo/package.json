@@ -11,7 +11,7 @@
     "jest": "^30.0.4",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.1.2",
-    "typescript": "^5.8.2",
+    "typescript": "^6.0.3",
     "webpack": "^5.0.0",
     "webpack-nano": "^1.1.1"
   },
