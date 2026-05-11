@@ -20,6 +20,7 @@
     "eslint-import-resolver-typescript": "^4.2.2",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^27.0.4",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "typescript": "^5.8.2"
   }
 }
