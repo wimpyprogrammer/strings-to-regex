@@ -2,10 +2,7 @@ module.exports = {
 	collectCoverageFrom: ['./src/**/?*.(js|ts)', '!**/src/**/?*.d.ts'],
 	restoreMocks: true,
 	transform: {
-		'^.+\\.ts$': [
-			'ts-jest',
-			{ isolatedModules: true, tsconfig: 'tsconfig.test.json' },
-		],
+		'^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
