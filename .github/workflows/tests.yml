@@ -39,7 +39,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
-      - run: npx prettier --check .
+      - run: yarn prettier --check .
       - run: yarn run build
       - run: yarn run lint
       - run: yarn run test
