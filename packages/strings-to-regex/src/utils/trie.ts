@@ -35,7 +35,6 @@ function mergeGroups(headChar: Char, tailGroup: CharTrie): CharTrie {
 		return new Map([[headChar, tailGroup]]) as CharTrie;
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const [onlyTail, onBranch] = tailGroup.entries().next().value!;
 	return new Map([[headChar + onlyTail, onBranch]]) as CharTrie;
 }
