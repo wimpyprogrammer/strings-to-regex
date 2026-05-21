@@ -30,13 +30,16 @@ jobs:
         with:
           fetch-depth: '2'
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Test on Node ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: yarn
-      - run: npx prettier --check .
+      - run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+      - run: yarn prettier --check .
       - run: yarn run build
       - run: yarn run lint
       - run: yarn run test

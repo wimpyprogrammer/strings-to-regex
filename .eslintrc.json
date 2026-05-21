@@ -34,6 +34,9 @@
 		},
 		"import/resolver": {
 			"typescript": {}
+		},
+		"jest": {
+			"version": 30
 		}
 	}
 }
