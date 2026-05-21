@@ -31,7 +31,7 @@
     "@types/jest-when": "^3.5.0",
     "jest": "^30.0.4",
     "jest-util": "^30.4.1",
-    "jest-when": "^3.1.0",
+    "jest-when": "^4.0.3",
     "regex-to-strings": "^2.0.1",
     "ts-jest": "^29.2.5"
   },
