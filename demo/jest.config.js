@@ -1,12 +1,10 @@
 module.exports = {
 	restoreMocks: true,
-	globals: {
-		'ts-jest': {
-			isolatedModules: true,
-			tsconfig: 'tsconfig.test.json',
-		},
-	},
 	preset: 'ts-jest',
+	transform: {
+		'^.+\\.[tj]s$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
+	},
+	transformIgnorePatterns: ['/node_modules/(?!escape-string-regexp/)'],
 	testEnvironment: 'node',
 	verbose: true,
 };
