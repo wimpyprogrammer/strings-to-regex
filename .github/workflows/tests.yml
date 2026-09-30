@@ -26,17 +26,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: '2'
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Test on Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: yarn
-      - run: npx prettier --check .
+      - run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+      - run: yarn prettier --check .
       - run: yarn run build
       - run: yarn run lint
       - run: yarn run test
@@ -45,7 +48,7 @@ jobs:
         working-directory: ./packages/strings-to-regex
 
       - name: Upload test coverage report to Codecov
-        uses: codecov/codecov-action@v6.0.0
+        uses: codecov/codecov-action@v7.1.1
         with:
           fail_ci_if_error: true
         env:
